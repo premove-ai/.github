@@ -1,6 +1,12 @@
 # Premove AI
 
-Premove AI is an attempt at reducing latency.
+Premove AI is an open-source effort to reduce end-to-end latency in
+conversational voice AI. We build practical infrastructure for real-time voice
+agents, with a focus on making the path from speech to reliable action faster,
+more efficient, and easier to run.
+
+Premove ITN is our first public project. More open-source infrastructure for
+conversational voice AI is in development and coming soon.
 
 ## Premove ITN
 
