@@ -1,2 +1,2 @@
 # .github
-Public organization profile for Premo AI
+Public organization profile for Premove AI

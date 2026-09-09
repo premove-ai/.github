@@ -1,6 +1,6 @@
-# Premo AI
+# Premove AI
 
-Premo AI is an attempt at reducing latency.
+Premove AI is an attempt at reducing latency.
 
 ## Premove ITN
 
