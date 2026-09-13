@@ -1,49 +1,37 @@
-# Premove AI
+# Faster conversational voice agents, built in the open
 
-Premove AI is an open-source effort to reduce end-to-end latency in
-conversational voice AI. We build practical infrastructure for real-time voice
-agents, with a focus on making the path from speech to reliable action faster,
-more efficient, and easier to run.
+I started building voice agents because I was tired of making the same
+frustrating phone call over and over again. I thought the hard part would be
+making the agent intelligent. Instead, I kept getting pulled into all the small
+systems problems underneath it: latency, transcription mistakes, tool calls,
+and everything that makes a conversation feel just a little bit worse.
 
-Premove ITN is our first public project. More open-source infrastructure for
-conversational voice AI is in development and coming soon.
+Premove is my open-source effort to work on those problems one by one.
 
-## Premove ITN
+The broader project is still under development. As parts become useful on
+their own, I’ll release them independently instead of waiting for the whole
+thing to be finished.
 
-Premove ITN is an open-source, context-aware inverse text normalization library
-for conversational voice-agent transcripts, with open weights. It converts
-spoken ASR output into written forms for phone numbers, email addresses,
-identifiers, dates, times, money, measurements, and alphanumeric codes.
+## Premove ITN: Context-aware inverse text normalization
 
-```text
-the room code is one oh five  →  the room code is 105
+The first released piece is [**Premove ITN**](https://github.com/premove-ai/premove-itn), an open-source,
+context-aware inverse text normalizer for English voice-agent transcripts.
+
+One of the first problems I hit was that an ASR transcript could look
+completely fine to me and still be wrong for the tool behind the agent.
+
+```vbnet
+my room number is two thirty
+→ room_number = 230
+
+meet me at two thirty
+→ 02:30
 ```
 
-Premove ITN separates normalization into three steps: deterministic Rust
-candidate generation, contextual scoring with one DeBERTa encoding, and exact
-dynamic-programming decoding.
+The same spoken words can need different written forms depending on context.
 
-Install the Python package:
+That is why I built **Premove ITN**: to turn spoken values like IDs, phone
+numbers, dates, times, amounts, and emails into the structured forms
+downstream tools expect.
 
-```bash
-pip install premove-itn
-```
-
-```python
-from premove_itn import PremoveITN
-
-itn = PremoveITN.from_pretrained()
-print(itn.normalize("the room code is one oh five"))
-# the room code is 105
-```
-
-On the frozen 400-row voice-agent benchmark, Premove ITN reached 99.50%
-semantic accuracy (398/400). The benchmark was held out from training and
-checkpoint selection. It is a synthetic stress benchmark, not a sample of live
-production traffic.
-
-- [Source code and documentation](https://github.com/premove-ai/premove-itn)
-- [Python package](https://pypi.org/project/premove-itn/)
-- [Open model weights](https://huggingface.co/premove-ai/premove-itn)
-- [Benchmark report](https://github.com/premove-ai/premove-itn/blob/main/eval/voice_agent_itn/results/first-evaluation/REPORT.md)
-- [Architecture](https://github.com/premove-ai/premove-itn/blob/main/docs/architecture.md)
+[**Explore Premove ITN →**](https://github.com/premove-ai/premove-itn)
